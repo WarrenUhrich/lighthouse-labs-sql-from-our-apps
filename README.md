@@ -14,3 +14,14 @@
 * Back-End
     * Application
     * Database
+
+## Plan of Action!
+
+CRUD / Create - Read - Update - Delete
+
+* `node cli-villains.js index` # List all villains.
+* `node cli-villains.js show <id>` # Show specific villain.
+* `node cli-villains.js edit <id> <name> <movie>` # Edit specific villain.
+* `node cli-villains.js new <name> <movie>` # New villain.
+* `node cli-villains.js delete <id>` # Remove specific villain.
+
