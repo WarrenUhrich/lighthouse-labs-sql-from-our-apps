@@ -37,7 +37,10 @@ switch (verb) {
         break;
     case 'show':
         const id = process.argv[3];
-        client.query(`SELECT * FROM movie_villains WHERE id = ${id};`)
+        client.query(
+                'SELECT * FROM movie_villains WHERE id = $1;',
+                [id] // Array of values to sanitize.
+            )
             .then((response) => {
                 console.log(response.rows[0]);
                 client.end();

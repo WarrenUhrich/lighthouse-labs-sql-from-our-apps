@@ -25,3 +25,6 @@ CRUD / Create - Read - Update - Delete
 * `node cli-villains.js new <name> <movie>` # New villain.
 * `node cli-villains.js delete <id>` # Remove specific villain.
 
+## SQL Injection
+
+
