@@ -13,12 +13,6 @@ const client = new Client(dbConfig);
 
 client.connect();
 
-client.query('SELECT * FROM movie_villains;')
-    .then((response) => {
-        console.log(response.rows);
-        client.end();
-    });
-
 // node cli-villains.js VERB
 const verb = process.argv[2];
 
@@ -32,5 +26,13 @@ switch (verb) {
             '\tnode cli-villains.js new <name> <movie>` # New villain.\n',
             '\tnode cli-villains.js delete <id>` # Remove specific villain.\n',
         );
+        client.end();
+        break;
+    case 'index':
+        client.query('SELECT * FROM movie_villains;')
+            .then((response) => {
+                console.log(response.rows);
+                client.end();
+            });
         break;
 }
