@@ -1,0 +1,23 @@
+{
+  "name": "lighthouse-labs-sql-from-our-apps",
+  "version": "1.0.0",
+  "description": "SQL from our apps lecture project.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WarrenUhrich/lighthouse-labs-sql-from-our-apps.git"
+  },
+  "keywords": [],
+  "author": "Warren Uhrich",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WarrenUhrich/lighthouse-labs-sql-from-our-apps/issues"
+  },
+  "homepage": "https://github.com/WarrenUhrich/lighthouse-labs-sql-from-our-apps#readme",
+  "dependencies": {
+    "pg": "^8.7.3"
+  }
+}
