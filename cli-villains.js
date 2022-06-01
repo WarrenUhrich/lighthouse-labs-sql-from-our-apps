@@ -21,11 +21,11 @@ switch (verb) {
     case 'help':
         console.log(
             'Help for Villain Command-Line Program:\n',
-            '\tnode cli-villains.js index` # List all villains.\n',
-            '\tnode cli-villains.js show <id>` # Show specific villain.\n',
-            '\tnode cli-villains.js edit <id> <name> <movie>` # Edit specific villain.\n',
-            '\tnode cli-villains.js new <name> <movie>` # New villain.\n',
-            '\tnode cli-villains.js delete <id>` # Remove specific villain.\n',
+            '\tnode cli-villains.js index # List all villains.\n',
+            '\tnode cli-villains.js show <id> # Show specific villain.\n',
+            '\tnode cli-villains.js edit <id> <name> <movie> # Edit specific villain.\n',
+            '\tnode cli-villains.js new <name> <movie> # New villain.\n',
+            '\tnode cli-villains.js delete <id> # Remove specific villain.\n',
         );
         client.end();
         break;
@@ -75,6 +75,20 @@ switch (verb) {
         )
             .then(() => {
                 console.log(newVillain + '\'s story begins in the world of ' + newMovie + '!');
+                client.end();
+            });
+        break;
+    case 'delete':
+        client.query(
+                `DELETE FROM
+                    movie_villains
+                WHERE
+                    id = $1;`,
+                [id]
+            )
+            .then(() => {
+                console.log('Villain defeated!');
+                client.end();
             });
         break;
 }
