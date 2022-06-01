@@ -13,7 +13,7 @@ const client = new Client(dbConfig);
 
 client.connect();
 
-// node cli-villains.js VERB
+// node cli-villains.js VERB ID
 const verb = process.argv[2];
 
 switch (verb) {
@@ -32,6 +32,14 @@ switch (verb) {
         client.query('SELECT * FROM movie_villains;')
             .then((response) => {
                 console.log(response.rows);
+                client.end();
+            });
+        break;
+    case 'show':
+        const id = process.argv[3];
+        client.query(`SELECT * FROM movie_villains WHERE id = ${id};`)
+            .then((response) => {
+                console.log(response.rows[0]);
                 client.end();
             });
         break;
