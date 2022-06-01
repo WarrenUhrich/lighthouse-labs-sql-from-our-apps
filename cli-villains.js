@@ -64,4 +64,17 @@ switch (verb) {
                 client.end();
             });
         break;
+    case 'new':
+        const newVillain = process.argv[3];
+        const newMovie = process.argv[4];
+        client.query(
+            `INSERT INTO
+                movie_villains(villain, movie)
+                VALUES($1, $2);`,
+            [newVillain, newMovie]
+        )
+            .then(() => {
+                console.log(newVillain + '\'s story begins in the world of ' + newMovie + '!');
+            });
+        break;
 }
