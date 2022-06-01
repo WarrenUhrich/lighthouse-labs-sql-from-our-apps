@@ -1,12 +1,14 @@
+require('dotenv').config();
+
 const pg = require('pg');
 const Client = pg.Client;
 
 const dbConfig = {
-    user: 'dbuser',
-    password: 'dbuser',
-    host: 'localhost',
-    database: 'postgres',
-    port: 5432
+    user: process.env.DBUSER,
+    password: process.env.DBPASS,
+    host: process.env.DBHOST,
+    database: process.env.DBNAME,
+    port: process.env.DBPORT
 };
 
 const client = new Client(dbConfig);
