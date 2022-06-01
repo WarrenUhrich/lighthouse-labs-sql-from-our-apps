@@ -1,6 +1,5 @@
 require('dotenv').config();
 
-const { application } = require('express');
 const express = require('express');
 const morgan = require('morgan');
 const villainQueries = require('./database/villain-queries');
