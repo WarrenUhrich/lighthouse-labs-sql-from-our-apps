@@ -78,4 +78,12 @@ switch (verb) {
                 client.end(); // Usually only used in terminal applications.
             });
         break;
+    case 'delete':
+        villainID = process.argv[3];
+        client.query('DELETE FROM movie_villains WHERE id = $1;', [villainID])
+            .then((response) => {
+                console.log('Villain', villainID, 'deleted succesfully.');
+                client.end(); // Usually only used in terminal applications.
+            });
+        break;
 }
