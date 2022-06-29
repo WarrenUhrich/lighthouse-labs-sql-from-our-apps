@@ -14,4 +14,11 @@ const client = new Client(config);
 
 client.connect();
 
-// client.query();
+client.query('SELECT * FROM movie_villains;')
+    .then((response) => {
+        console.log('Response received!');
+        // console.log(response); // Full Response object.
+        console.log('Response Rows:', response.rows);
+        client.end(); // Usually only used in terminal applications.
+    })
+    .catch((error) => { console.error(error); });
