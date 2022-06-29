@@ -1,14 +1,16 @@
-const { appendFile } = require('fs');
+require('dotenv').config();
 const pg = require('pg');
 
 const Client = pg.Client;
 
+// const {PGHOST, PGUSER, PGPASSWORD, PGDATABASE, PGPORT} = process.env;
+
 const config = {
-    host: 'localhost',
-    user: 'postgres',
-    password: 'dbuser',
-    database: 'sql_from_apps',
-    port: 5432
+    host: process.env.PGHOST,
+    user: process.env.PGUSER,
+    password: process.env.PGPASSWORD,
+    database: process.env.PGDATABASE,
+    port: process.env.PGPORT
 };
 
 const client = new Client(config);
