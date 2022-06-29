@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 // ejs
 // nodemon
+const {getVillains, getVillainByID} = require('./database/villains-queries');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -18,5 +19,16 @@ app.listen(PORT, () => {
 
 // All villains!
 app.get('/', (req, res) => {
-    
+    getVillains()
+        .then((rows) => {
+            res.json(rows);
+        });
+});
+
+// Specific villain!
+app.get('/:id', (req, res) => {
+    getVillainByID(req.params.id)
+        .then((row) => {
+            res.json(row);
+        });
 });
