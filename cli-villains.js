@@ -54,4 +54,15 @@ switch (verb) {
                 client.end(); // Usually only used in terminal applications.
             });
         break;
+    case 'new':
+        const villain = process.argv[3];
+        const movie = process.argv[4];
+        // PREVENT SQL INJECTION ATTACKS!
+        // Avoid string interpolation, use numbered placeholders and an array.
+        client.query('INSERT INTO movie_villains(villain, movie) VALUES($1, $2);', [villain, movie])
+            .then((response) => {
+                console.log('New villain added:', villain, 'From:', movie);
+                client.end(); // Usually only used in terminal applications.
+            });
+        break;
 }
