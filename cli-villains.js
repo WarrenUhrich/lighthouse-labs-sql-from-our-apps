@@ -25,6 +25,9 @@ client.connect();
 //     .catch((error) => { console.error(error); });
 
 const verb = process.argv[2];
+let villainID;
+let villain;
+let movie;
 
 switch (verb) {
     case 'help':
@@ -45,7 +48,7 @@ switch (verb) {
             });
         break;
     case 'show':
-        const villainID = process.argv[3];
+        villainID = process.argv[3];
         // PREVENT SQL INJECTION ATTACKS!
         // Avoid string interpolation, use numbered placeholders and an array.
         client.query('SELECT * FROM movie_villains WHERE id = $1;', [villainID])
@@ -55,13 +58,23 @@ switch (verb) {
             });
         break;
     case 'new':
-        const villain = process.argv[3];
-        const movie = process.argv[4];
+        villain = process.argv[3];
+        movie = process.argv[4];
         // PREVENT SQL INJECTION ATTACKS!
         // Avoid string interpolation, use numbered placeholders and an array.
         client.query('INSERT INTO movie_villains(villain, movie) VALUES($1, $2);', [villain, movie])
             .then((response) => {
                 console.log('New villain added:', villain, 'From:', movie);
+                client.end(); // Usually only used in terminal applications.
+            });
+        break;
+    case 'edit':
+        villainID = process.argv[3];
+        villain = process.argv[4];
+        movie = process.argv[5];
+        client.query('UPDATE movie_villains SET villain = $2, movie = $3 WHERE id = $1;', [villainID, villain, movie])
+            .then((response) => {
+                console.log('Villain with ID:', villainID, 'Updated:', villain, 'From:', movie);
                 client.end(); // Usually only used in terminal applications.
             });
         break;
