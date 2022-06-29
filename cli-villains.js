@@ -46,7 +46,9 @@ switch (verb) {
         break;
     case 'show':
         const villainID = process.argv[3];
-        client.query(`SELECT * FROM movie_villains WHERE id = ${villainID};`)
+        // PREVENT SQL INJECTION ATTACKS!
+        // Avoid string interpolation, use numbered placeholders and an array.
+        client.query('SELECT * FROM movie_villains WHERE id = $1;', [villainID])
             .then((response) => {
                 console.log(response.rows[0]);
                 client.end(); // Usually only used in terminal applications.
