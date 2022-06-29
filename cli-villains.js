@@ -13,7 +13,7 @@ const config = {
 
 const client = new Client(config);
 
-// client.connect();
+client.connect();
 
 // client.query('SELECT * FROM movie_villains;')
 //     .then((response) => {
@@ -36,5 +36,12 @@ switch (verb) {
             '\tnode cli-villains.js edit <id> <villain> <movie> # Edit Existing Villain\n',
             '\tnode cli-villains.js delete <id> # Delete Specific Villain\n'
         );
+        break;
+    case 'index':
+        client.query('SELECT * FROM movie_villains;')
+            .then((response) => {
+                console.log(response.rows);
+                client.end(); // Usually only used in terminal applications.
+            });
         break;
 }
