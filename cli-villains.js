@@ -44,4 +44,12 @@ switch (verb) {
                 client.end(); // Usually only used in terminal applications.
             });
         break;
+    case 'show':
+        const villainID = process.argv[3];
+        client.query(`SELECT * FROM movie_villains WHERE id = ${villainID};`)
+            .then((response) => {
+                console.log(response.rows[0]);
+                client.end(); // Usually only used in terminal applications.
+            });
+        break;
 }
