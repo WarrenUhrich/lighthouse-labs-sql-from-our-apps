@@ -53,6 +53,15 @@ switch (verb) {
                 client.end();
             });
         break;
+    case 'new':
+        villain = process.argv[3];
+        movie = process.argv[4];
+        client.query('INSERT INTO movie_villains(villain, movie) VALUES($1, $2);', [villain, movie])
+            .then((response) => {
+                console.log(`${villain} from ${movie} has emerged from the abyss! 😈`);
+                client.end();
+            });
+        break;
     default:
         console.log('Command not found...');
         client.end();
