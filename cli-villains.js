@@ -26,13 +26,12 @@ switch (verb) {
         );
         break;
     case 'index':
+        client.query('SELECT * FROM movie_villains;', (err, res) => {
+            console.log(res.rows);
+            client.end();
+        });
         break;
     default:
         console.log('Command not found...');
         break;
 }
-
-// client.query('SELECT * FROM movie_villains;', (err, res) => {
-//     console.log(err, res);
-//     client.end();
-// });
