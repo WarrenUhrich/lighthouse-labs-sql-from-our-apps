@@ -62,6 +62,14 @@ switch (verb) {
                 client.end();
             });
         break;
+    case 'delete':
+        id = process.argv[3];
+        client.query('DELETE FROM movie_villains WHERE id=$1;', [id])
+            .then((response) => {
+                console.log(`This villain is no more!`);
+                client.end();
+            });
+        break;
     default:
         console.log('Command not found...');
         client.end();
