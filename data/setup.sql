@@ -2,6 +2,10 @@ DROP DATABASE IF EXISTS sql_from_our_apps;
 CREATE DATABASE sql_from_our_apps;
 USE DATABASE sql_from_our_apps;
 
+-- CREATE USER myuser;
+-- ALTER USER myuser password 'your_pass';
+-- GRANT ALL PRIVILEGES ON DATABASE sql_from_our_apps TO myuser;
+
 DROP TABLE IF EXISTS movie_villains;
 
 CREATE TABLE movie_villains (
