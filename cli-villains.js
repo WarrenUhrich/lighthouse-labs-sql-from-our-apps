@@ -11,7 +11,28 @@ const client = new Client({
 
 client.connect();
 
-client.query('SELECT * FROM movie_villains;', (err, res) => {
-    console.log(err, res);
-    client.end();
-});
+const verb = process.argv[2];
+// console.log(verb);
+
+switch (verb) {
+    case 'help':
+        console.log(
+            'Help for Movie Villain CRUD program:\n',
+            '\tnode cli-villains.js index\n',
+            '\tnode cli-villains.js show <id>\n',
+            '\tnode cli-villains.js edit <id> <name> <movie>\n',
+            '\tnode cli-villains.js new <name> <movie>\n',
+            '\tnode cli-villains.js delete <id>\n'
+        );
+        break;
+    case 'index':
+        break;
+    default:
+        console.log('Command not found...');
+        break;
+}
+
+// client.query('SELECT * FROM movie_villains;', (err, res) => {
+//     console.log(err, res);
+//     client.end();
+// });
