@@ -1,0 +1,27 @@
+{
+  "name": "lighthouse-labs-sql-from-our-apps",
+  "version": "1.0.0",
+  "description": "SQL and Node.js examples.",
+  "main": "cli-villains.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WarrenUhrich/lighthouse-labs-sql-from-our-apps.git"
+  },
+  "keywords": [
+    "pg",
+    "node-postgres",
+    "Node.js"
+  ],
+  "author": "Warren Uhrich",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WarrenUhrich/lighthouse-labs-sql-from-our-apps/issues"
+  },
+  "homepage": "https://github.com/WarrenUhrich/lighthouse-labs-sql-from-our-apps#readme",
+  "dependencies": {
+    "pg": "^8.7.3"
+  }
+}
