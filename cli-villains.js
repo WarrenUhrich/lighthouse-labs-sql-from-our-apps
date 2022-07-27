@@ -33,11 +33,12 @@ switch (verb) {
         });
         break;
     case 'show':
-        id = process.argv[3];
-        client.query(`SELECT * FROM movie_villains WHERE id=${id};`, (err, res) => {
-            console.log(res.rows[0]);
-            client.end();
-        });
+        id =  process.argv[3];
+        client.query('SELECT * FROM movie_villains WHERE id=$1;', [id])
+            .then((response) => {
+                console.log(response.rows[0]);
+                client.end();
+            });
         break;
     default:
         console.log('Command not found...');
