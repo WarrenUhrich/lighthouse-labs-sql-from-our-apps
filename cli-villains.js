@@ -13,6 +13,7 @@ client.connect();
 
 const verb = process.argv[2];
 // console.log(verb);
+let id;
 
 switch (verb) {
     case 'help':
@@ -28,6 +29,13 @@ switch (verb) {
     case 'index':
         client.query('SELECT * FROM movie_villains;', (err, res) => {
             console.log(res.rows);
+            client.end();
+        });
+        break;
+    case 'show':
+        id = process.argv[3];
+        client.query(`SELECT * FROM movie_villains WHERE id=${id};`, (err, res) => {
+            console.log(res.rows[0]);
             client.end();
         });
         break;
