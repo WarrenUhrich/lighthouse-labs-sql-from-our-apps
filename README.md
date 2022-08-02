@@ -12,4 +12,3 @@
 * `node cli-villains.js edit <id> <villain> <movie> # Edit specific entry!`
 * `node cli-villains.js new <villain> <movie> # Create new entry!`
 * `node cli-villains.js delete <id> # Remove this entry!`
-
