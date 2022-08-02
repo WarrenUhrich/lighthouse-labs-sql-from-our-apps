@@ -29,6 +29,8 @@ As full-stack developers, we aim to build web pages and web applications that ma
 
 Up until this point, every in-class example we've built together has either been focused on just one of these pieces alone, or a combination of *some* pieces. Today? We finally open that door to really incorporating all pieces in a single project. Today, we build an application that is capable of server-side logic, serving any necessary front-end assets, and can even incorporate a database of our own.
 
+![Full-stack diagram.](https://github.com/WarrenUhrich/lighthouse-labs-sql-from-our-apps/blob/2022.08.02-web-flex-16may2022/FULL_STACK_DIAGRAM.png?raw=true)
+
 ## Plan of Action!
 
 CRUD / Create - Read - Update - Delete
