@@ -3,7 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 
-const { getVillains } = require('./data/villain-queries');
+const { getVillains, getVillainById } = require('./data/villain-queries');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -20,5 +20,12 @@ app.get('/movie-villains', (req, res) => {
     getVillains().then((rows) => {
         const templateVars = {villains: rows};
         res.render('movie-villains/index', templateVars);
+    });
+});
+
+app.get('/movie-villains/:id', (req, res) => {
+    getVillainById(req.params.id).then((row) => {
+        const templateVars = {villain: row};
+        res.render('movie-villains/show', templateVars);
     });
 });
