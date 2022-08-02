@@ -87,4 +87,17 @@ switch (verb) {
                 console.error(error);
             });
         break;
+    case 'delete':
+        id = process.argv[3];
+        // console.log(process.argv);
+
+        client.query('DELETE FROM movie_villains WHERE id=$1;', [id])
+            .then((result) => {
+                console.log('Villain defeated!');
+                client.end(); // Frees up the command-line; avoid in Express apps.
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+        break;
 }
