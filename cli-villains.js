@@ -45,7 +45,8 @@ switch (verb) {
         id = process.argv[3];
         // console.log(id);
 
-        client.query(`SELECT * FROM movie_villains WHERE id=${id};`)
+        // Prevent injection attacks!!!
+        client.query('SELECT * FROM movie_villains WHERE id=$1;', [id])
             .then((result) => {
                 // console.log(result);
                 if (result.rows[0]) {
