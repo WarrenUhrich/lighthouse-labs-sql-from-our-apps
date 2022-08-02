@@ -60,4 +60,18 @@ switch (verb) {
                 console.error(error);
             });
         break;
+    case 'edit':
+        id = process.argv[3];
+        villain = process.argv[4];
+        movie = process.argv[5];
+
+        client.query('UPDATE movie_villains SET villain=$2, movie=$3 WHERE id=$1;', [id, villain, movie])
+            .then((result) => {
+                console.log('This villain was upgraded successfully; watch out!');
+                client.end(); // Frees up the command-line; avoid in Express apps.
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+        break;
 }
