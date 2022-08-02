@@ -12,18 +12,6 @@ const client = new Client(config);
 
 client.connect();
 
-// client.query('SELECT * FROM movie_villains;')
-//     .then((result) => {
-//         // console.log(result);
-//         console.log(result.rows);
-//         client.end(); // Frees up the command-line; avoid in Express apps.
-//     })
-//     .catch((error) => {
-//         console.error(error);
-//     });
-
-client.end();
-
 const verb = process.argv[2];
 
 switch (verb) {
@@ -36,8 +24,17 @@ switch (verb) {
             '\tnode cli-villains.js new <villain> <movie> # Create new entry!\n',
             '\tnode cli-villains.js delete <id> # Remove this entry!\n',
         );
+        client.end();
         break;
     case 'index':
-
+        client.query('SELECT * FROM movie_villains;')
+            .then((result) => {
+                // console.log(result);
+                console.log(result.rows);
+                client.end(); // Frees up the command-line; avoid in Express apps.
+            })
+            .catch((error) => {
+                console.error(error);
+            });
         break;
 }
