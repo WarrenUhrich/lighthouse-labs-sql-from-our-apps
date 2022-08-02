@@ -14,6 +14,10 @@ client.connect();
 
 const verb = process.argv[2];
 
+let id;
+let villain;
+let movie;
+
 switch (verb) {
     case 'help':
         console.log(
@@ -31,6 +35,24 @@ switch (verb) {
             .then((result) => {
                 // console.log(result);
                 console.log(result.rows);
+                client.end(); // Frees up the command-line; avoid in Express apps.
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+        break;
+    case 'show':
+        id = process.argv[3];
+        // console.log(id);
+
+        client.query(`SELECT * FROM movie_villains WHERE id=${id};`)
+            .then((result) => {
+                // console.log(result);
+                if (result.rows[0]) {
+                    console.log(result.rows[0]);
+                } else {
+                    console.log('Villain is missing... maybe they escaped!?')
+                }
                 client.end(); // Frees up the command-line; avoid in Express apps.
             })
             .catch((error) => {
