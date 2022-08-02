@@ -1,6 +1,6 @@
 # Lighthouse Labs | SQL from our Apps
 
-[GitHub Repository Branch](https://github.com/WarrenUhrich/lighthouse-labs-sql-from-our-apps/tree/2022.08.02-web-flex-16may2022) | [Vimeo Video Recording (Coming Soon!)](#coming-soon)
+[GitHub Repository Branch](https://github.com/WarrenUhrich/lighthouse-labs-sql-from-our-apps/tree/2022.08.02-web-flex-16may2022) | [Vimeo Video Recording](https://vimeo.com/735916254/63acaa97ae)
 
 * [X] Placing the Final Piece into the Stack
 * [X] Connecting to a Database in Node.js
