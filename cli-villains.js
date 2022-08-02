@@ -13,8 +13,10 @@ const client = new Client(config);
 client.connect();
 
 client.query('SELECT * FROM movie_villains;')
-    .then((response) => {
-        console.log(response);
+    .then((result) => {
+        // console.log(result);
+        console.log(result.rows);
+        client.end(); // Frees up the command-line; avoid in Express apps.
     })
     .catch((error) => {
         console.error(error);
