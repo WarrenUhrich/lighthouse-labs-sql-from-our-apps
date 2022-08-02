@@ -74,4 +74,17 @@ switch (verb) {
                 console.error(error);
             });
         break;
+    case 'new':
+        villain = process.argv[3];
+        movie = process.argv[4];
+
+        client.query('INSERT INTO movie_villains(villain, movie) VALUES($1, $2);', [villain, movie])
+            .then((result) => {
+                console.log('A new villain is born!');
+                client.end(); // Frees up the command-line; avoid in Express apps.
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+        break;
 }
