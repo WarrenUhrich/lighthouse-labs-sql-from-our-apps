@@ -13,6 +13,8 @@ client.connect();
 const verb = process.argv[2];
 // console.log(verb);
 
+let id;
+
 switch(verb) {
     case 'help':
         console.log(
@@ -30,6 +32,15 @@ switch(verb) {
             .then((response) => {
                 // console.log(response);
                 console.log(response.rows);
+                client.end();
+            });
+        break;
+    case 'show':
+        id = process.argv[3];
+        client.query(`SELECT * FROM movie_villains WHERE id=${id};`)
+            .then((response) => {
+                // console.log(response);
+                console.log(response.rows[0]);
                 client.end();
             });
         break;
