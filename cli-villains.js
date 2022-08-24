@@ -13,7 +13,7 @@ client.connect();
 const verb = process.argv[2];
 // console.log(verb);
 
-let id;
+let id, villain, movie;
 
 switch(verb) {
     case 'help':
@@ -21,9 +21,9 @@ switch(verb) {
             'Help for "Villain Command-Line Program:\n',
             '\tnode cli-villains.js index # Show all records\n',
             '\tnode cli-villains.js show <id> Show specific record\n',
+            '\tnode cli-villains.js new <villain> <movie> # Create new record\n',
             '\tnode cli-villains.js update <id> <villain> <movie> # Update existing record\n',
             '\tnode cli-villains.js delete <id> # Delete existing record\n',
-            '\tnode cli-villains.js new <villain> <movie> # Create new record\n',
         );
         client.end();
         break;
@@ -37,6 +37,7 @@ switch(verb) {
         break;
     case 'show':
         id = process.argv[3];
+
         // client.query(`SELECT * FROM movie_villains WHERE id=${id};`)
         client.query('SELECT * FROM movie_villains WHERE id=$1;', [id])
             .then((response) => {
@@ -44,5 +45,19 @@ switch(verb) {
                 console.log(response.rows[0]);
                 client.end();
             });
+        break;
+    case 'new':
+        villain = process.argv[3];
+        movie = process.argv[4];
+        client.query(
+                `INSERT INTO
+                movie_villains(villain, movie)
+                VALUES($1, $2);`,
+                [villain, movie])
+              .then((response) => {
+                // console.log(response);
+                console.log('A villain just got their origin story!');
+                client.end();
+              });
         break;
 }
