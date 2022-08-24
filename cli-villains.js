@@ -37,7 +37,6 @@ switch(verb) {
         break;
     case 'show':
         id = process.argv[3];
-
         // client.query(`SELECT * FROM movie_villains WHERE id=${id};`)
         client.query('SELECT * FROM movie_villains WHERE id=$1;', [id])
             .then((response) => {
@@ -72,5 +71,18 @@ switch(verb) {
             console.log('A villain has just changed their style!');
             client.end();
         });
+        break;
+    case 'delete':
+        id = process.argv[3];
+        client.query('DELETE FROM movie_villains WHERE id=$1;', [id])
+            .then((response) => {
+                // console.log(response);
+                console.log('A villain has been defeated!');
+                client.end();
+            });
+        break;
+    default:
+        console.log('Command not recognized, try running: node cli-villains.js help');
+        client.end();
         break;
 }
