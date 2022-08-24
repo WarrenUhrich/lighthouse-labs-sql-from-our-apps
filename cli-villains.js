@@ -60,4 +60,17 @@ switch(verb) {
                 client.end();
               });
         break;
+    case 'update':
+        id = process.argv[3];
+        villain = process.argv[4];
+        movie = process.argv[5];
+        client.query(
+            'UPDATE movie_villains SET villain = $2, movie = $3 WHERE id = $1;',
+            [id, villain, movie]
+        ).then((response) => {
+            // console.log(response);
+            console.log('A villain has just changed their style!');
+            client.end();
+        });
+        break;
 }
