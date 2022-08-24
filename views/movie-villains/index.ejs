@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Villains Index</title>
+</head>
+<body>
+    <h1>Movie Villains Index</h1>
+    <% if (villains.length > 0) { %>
+        <ul>
+            <% for (const villain of villains) { %>
+                <li>
+                    <%= villain.villain %>
+                    (<%= villain.movie %>)
+                </li>
+            <% } // End villains for loop. %>
+        </ul>
+    <% } else { %>
+        <p>No villains available.</p>
+    <% } // End villains if/else %>
+</body>
+</html>
