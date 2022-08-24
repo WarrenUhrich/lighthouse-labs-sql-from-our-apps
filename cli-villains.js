@@ -10,9 +10,27 @@ const client = new Client({
 
 client.connect();
 
-client.query('SELECT * FROM movie_villains;')
-      .then((response) => {
-        // console.log(response);
-        console.log(response.rows);
+const verb = process.argv[2];
+// console.log(verb);
+
+switch(verb) {
+    case 'help':
+        console.log(
+            'Help for "Villain Command-Line Program:\n',
+            '\tnode cli-villains.js index # Show all records\n',
+            '\tnode cli-villains.js show <id> Show specific record\n',
+            '\tnode cli-villains.js update <id> <villain> <movie> # Update existing record\n',
+            '\tnode cli-villains.js delete <id> # Delete existing record\n',
+            '\tnode cli-villains.js new <villain> <movie> # Create new record\n',
+        );
         client.end();
-      });
+        break;
+    case 'index':
+        client.query('SELECT * FROM movie_villains;')
+            .then((response) => {
+                // console.log(response);
+                console.log(response.rows);
+                client.end();
+            });
+        break;
+}

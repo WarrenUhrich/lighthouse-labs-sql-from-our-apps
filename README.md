@@ -7,8 +7,8 @@
 
 ## Our CLI Plan!
 
-* `node our-file.js index # Show all records`
-* `node our-file.js show <id> Show specific record`
-* `node our-file.js update <id> <new-info> # Update existing record`
-* `node our-file.js delete <id> # Delete existing record`
-* `node our-file.js new <new-info> # Create new record`
+* `node cli-villains.js index # Show all records`
+* `node cli-villains.js show <id> Show specific record`
+* `node cli-villains.js update <id> <villain> <movie> # Update existing record`
+* `node cli-villains.js delete <id> # Delete existing record`
+* `node cli-villains.js new <villain> <movie> # Create new record`
