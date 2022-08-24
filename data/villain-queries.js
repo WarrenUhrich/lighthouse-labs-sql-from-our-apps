@@ -6,4 +6,10 @@ const getVillains = () => {
                  .then((result) => {return result.rows;});
 };
 
-module.exports = { getVillains };
+// SHOW:
+const getVillainById = (id) => {
+    return client.query('SELECT * FROM movie_villains WHERE id=$1;', [id])
+                 .then((result) => {return result.rows[0];});
+};
+
+module.exports = { getVillains, getVillainById };
