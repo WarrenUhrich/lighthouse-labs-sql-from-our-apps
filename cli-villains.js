@@ -37,7 +37,8 @@ switch(verb) {
         break;
     case 'show':
         id = process.argv[3];
-        client.query(`SELECT * FROM movie_villains WHERE id=${id};`)
+        // client.query(`SELECT * FROM movie_villains WHERE id=${id};`)
+        client.query('SELECT * FROM movie_villains WHERE id=$1;', [id])
             .then((response) => {
                 // console.log(response);
                 console.log(response.rows[0]);
