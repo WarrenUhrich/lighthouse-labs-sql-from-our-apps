@@ -2,8 +2,9 @@
   "name": "lighthouse-labs-sql-from-our-apps",
   "version": "1.0.0",
   "description": "Practice with the Node.js pg package.",
-  "main": "cli-villains.js",
+  "main": "index.js",
   "scripts": {
+    "serve": "node_modules\\.bin\\nodemon",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
