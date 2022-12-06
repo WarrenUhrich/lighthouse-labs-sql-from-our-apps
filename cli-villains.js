@@ -18,6 +18,7 @@ client.connect();
 // console.log('Terminal arguments:', process.argv);
 
 const verb = process.argv[2];
+let id;
 
 switch(verb) {
     case 'help':
@@ -32,6 +33,26 @@ switch(verb) {
             'delete <ID>: remove villain by ID\r\n'
         );
         client.end();
+        break;
+    case 'index':
+        client.query('SELECT * FROM movie_villains;')
+              .then((result) => {
+                return result.rows;
+              })
+              .then((rows) => {
+                console.log(rows);
+                client.end();
+              });
+        break;
+    case 'show':
+        id = process.argv[3];
+        client.query(`SELECT * FROM movie_villains WHERE id = ${id};`)
+              .then(result => result.rows)
+              .then(rows => rows[0])
+              .then((row) => {
+                console.log(row);
+                client.end();
+              });
         break;
     default:
         console.log('Invalid command; please run "cli-villains.js help" for assistance.');
