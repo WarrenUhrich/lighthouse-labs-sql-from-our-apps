@@ -18,7 +18,7 @@ client.connect();
 // console.log('Terminal arguments:', process.argv);
 
 const verb = process.argv[2];
-let id;
+let id, name, movie;
 
 switch(verb) {
     case 'help':
@@ -55,6 +55,38 @@ switch(verb) {
               .then(rows => rows[0])
               .then((row) => {
                 console.log(row);
+                client.end();
+              });
+        break;
+    case 'new':
+        name = process.argv[3];
+        movie = process.argv[4];
+        client.query(
+            'INSERT INTO movie_villains(villain, movie) ' +
+            'VALUES($1, $2);',
+            [name, movie]
+        ).then((result) => {
+            console.log('A new villain was born!');
+            client.end();
+        });
+        break;
+    case 'edit':
+        id = process.argv[3];
+        name = process.argv[4];
+        movie = process.argv[5];
+        client.query(
+            'UPDATE movie_villains SET villain = $2, movie = $3 WHERE id = $1;',
+            [id, name, movie]
+        ).then((result) => {
+            console.log('Villain has changed their style.');
+            client.end();
+        });
+        break;
+    case 'delete':
+        id = process.argv[3];
+        client.query('DELETE FROM movie_villains WHERE id = $1;', [id])
+              .then((result) => {
+                console.log('Villain defeated!');
                 client.end();
               });
         break;
