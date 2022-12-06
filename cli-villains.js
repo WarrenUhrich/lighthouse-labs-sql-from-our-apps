@@ -46,7 +46,11 @@ switch(verb) {
         break;
     case 'show':
         id = process.argv[3];
-        client.query(`SELECT * FROM movie_villains WHERE id = ${id};`)
+        // Never pass user values into a query directly!
+        // You're leaving yourself open to SQL injection attacks this way...
+        // client.query(`SELECT * FROM movie_villains WHERE id = ${id};`)
+        // Instead, sanitize your values first!!!
+        client.query('SELECT * FROM movie_villains WHERE id = $1;', [id])
               .then(result => result.rows)
               .then(rows => rows[0])
               .then((row) => {
