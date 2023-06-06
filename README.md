@@ -9,7 +9,7 @@
 
 ## To Run these Examples:
 
-First set up an appropriate database and table, see: `/data/setup.sql`. Create a `.env` file and populate it with your credentials.
+First set up an appropriate database and table, see: `/db/schema/` and `/db/seeds/`. Create a `.env` file and populate it with your credentials.
 
 ### Command-Line Application
 
