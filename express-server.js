@@ -1,10 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
-const client = require('./db/connection');
-const {
-    getAllMovieVillains,
-    getMovieVillainById
-} = require('./db/queries/movie-villains');
+
+const movieVillainsRoutes = require('./routes/movie-villains');
 
 /////////////////////////////////////////////////////////////////////////////////
 // Set-up
@@ -38,43 +35,5 @@ app.get('/test', (req, res) => {
     res.status(200).end('<p>Hello, World!</p>');
 });
 
-/**
- * Index
- */
-
-app.get('/movie-villains/', (req, res) => {
-    getAllMovieVillains()
-        .then((movieVillains) => {
-            const templateVars = {
-                movieVillains: movieVillains
-            };
-            res.render('movie-villains/index', templateVars);
-        });
-
-    // client.query('SELECT * FROM movie_villains;')
-    //     .then((result) => {
-    //         const movieVillains = result.rows;
-
-    //         console.log('movieVillains:', movieVillains);
-
-    //         const templateVars = {
-    //             movieVillains: movieVillains
-    //         };
-            
-    //         res.render('movie-villains/index', templateVars);
-    //     });
-});
-
-/**
- * Show Movie Villain
- */
-
-app.get('/movie-villains/:id', (req, res) => {
-    getMovieVillainById(req.params.id)
-        .then((movieVillain) => {
-            const templateVars = {
-                movieVillain: movieVillain
-            };
-            res.render('movie-villains/show', templateVars);
-        });
-});
+// Bring in movie villains routes from file.
+app.use('/movie-villains', movieVillainsRoutes);
