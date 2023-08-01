@@ -32,7 +32,8 @@ switch(command) {
     
     case 'show':
         id = args[1];
-        client.query(`SELECT * FROM movie_villains WHERE id = ${id};`)
+        // client.query(`SELECT * FROM movie_villains WHERE id = ${id};`) // DON'T DO THIS!
+        client.query('SELECT * FROM movie_villains WHERE id = $1;', [id])
               .then((results) => {
                 const movieVillain = results.rows[0];
                 console.log(movieVillain);
@@ -46,9 +47,9 @@ switch(command) {
         movie = args[3];
         client.query(`
                     UPDATE movie_villains
-                    SET name = '${name}', movie = '${movie}'
-                    WHERE id = ${id};
-                `)
+                    SET name = $1, movie = $2
+                    WHERE id = $3;
+                `, [name, movie, id])
               .then((results) => {
                 console.log('Villain updated.');
                 client.end();
@@ -57,7 +58,7 @@ switch(command) {
 
     case 'delete':
         id = args[1];
-        client.query(`DELETE FROM movie_villains WHERE id = ${id};`)
+        client.query('DELETE FROM movie_villains WHERE id = $1;', [id])
               .then((results) => {
                 console.log('Villain defeated.');
                 client.end();
@@ -67,10 +68,11 @@ switch(command) {
     case 'create':
         name = args[1];
         movie = args[2];
-        client.query(`
-                    INSERT INTO movie_villains(name, movie)
-                    VALUES('${name}', '${movie}');
-                `)
+
+        let query = 'INSERT INTO movie_villains(name, movie) ';
+        query    += 'VALUES($1, $2);'
+
+        client.query(query, [name, movie])
               .then((results) => {
                 console.log('A new villain is born!');
                 client.end();
