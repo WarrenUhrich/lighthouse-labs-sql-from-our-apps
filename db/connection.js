@@ -5,11 +5,11 @@ dotenv.config();
 const Client = pg.Client;
 
 const config = {
-    host: 'localhost',
-    port: 5432,
-    database: 'sql_from_our_apps',
-    user: 'dbuser',
-    password: 'dbuser',
+    host:     process.env.DB_HOST,
+    port:     process.env.DB_PORT,
+    database: process.env.DB_NAME,
+    user:     process.env.DB_USER,
+    password: process.env.DB_PASS,
 };
 
 const client = new Client(config);
