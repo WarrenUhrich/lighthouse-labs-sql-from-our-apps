@@ -9,28 +9,6 @@
 
 ## To Run these Examples:
 
-### Terminal Example `movie-villains.js`
-
-To run the terminal-based project, run the following in the terminal:
-
-```sh
-node movie-villains.js help
-```
-
-If you receive an error, open the `movie-villains.js` file and double-check the `config` variable. It is likely that these credentials do not match your own.
-
-### Web Application Example `express-server.js`
-
-First set up an appropriate database and table, see: `/db/schema/` and `/db/seeds/`. Run both SQL files in your database.
-
-Create a `.env` file and populate it with your credentials. See `/.env.example` for a sample on which values are required.
-
-Once the above are completed, run the project like so:
-
-```sh
-node express-server.js
-```
-
 ### Command-Line Application
 
 Ensure the connection details in `movie-villains` are updated for your environment.
