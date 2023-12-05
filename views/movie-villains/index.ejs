@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Movie Villains Index</title>
+    </head>
+    <body>
+        <h1>Movie Villains Index</h1>
+
+        <ul>
+
+            <% for(const movieVillain of movieVillains) { %>
+
+                <li>
+
+                    <%= movieVillain.name %>
+
+                    (<%= movieVillain.movie %>)
+
+                </li>
+
+            <% } // End for loop %>
+
+        </ul>
+
+    </body>
+</html>
